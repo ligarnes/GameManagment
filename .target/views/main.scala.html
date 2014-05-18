@@ -1,0 +1,36 @@
+@(title: String, user: User)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <!-- <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")"> -->
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        
+        
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    </head>
+    <body>
+        <header>
+            <a href="" id="logo"><span>Zen</span>tasks</a>
+            <dl id="user">
+                <dt>@user.getUsername() <span>(@user.getEmail())</span></dt>
+                <dd> 
+                    <a href="@routes.LoginController.logout()">Logout</a>
+                </dd>
+            </dl>
+        </header>
+        <nav>
+            <h4 class="dashboard"><a href="#/">Dashboard</a></h4>
+            <ul id="projects">
+            </ul>
+            <button id="newGroup">New group</button>
+        </nav>
+        <section id="main">
+        @content
+        </section>
+    </body>
+</html>
