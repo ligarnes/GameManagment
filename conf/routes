@@ -1,0 +1,37 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.SocialNetwork.index()
+
+# Authentication
+GET     /login                      controllers.LoginController.login()
+POST    /login                      controllers.LoginController.authenticate()
+GET     /logout                     controllers.LoginController.logout()
+
+# Wall
+GET     /wall                       controllers.SocialNetwork.wall()
+
+
+#Campaign
+GET		/campaign/:campaign/conversation		controllers.campaign.ConversationController.viewConversationsList(campaign: Integer)
+GET 	/campaign/:campaign/conversation/add		controllers.campaign.ConversationController.addConversationView(campaign: Integer)
+POST 	/campaign/:campaign/conversation/add		controllers.campaign.ConversationController.addConversation(campaign: Integer)
+
+# Campaign Conversation
+GET		/campaign/:campaign/conversation/:conversation		controllers.campaign.ConversationController.viewConversation(campaign: Integer, conversation: Integer)
+POST 	/campaign/:campaign/conversation/:conversation 		controllers.campaign.ConversationController.addMessage(campaign: Integer, conversation: Integer)
+
+# Campaign Calendar
+GET		/campaign/:campaign/calendar/		controllers.campaign.CalendarController.viewCalendar(campaign: Integer)
+GET		/campaign/:campaign/calendar/addDate		controllers.campaign.CalendarController.addDateView(campaign: Integer)
+POST	/campaign/:campaign/calendar/addDate		controllers.campaign.CalendarController.addDate(campaign: Integer)
+POST	/campaign/:campaign/calendar/:gameSession/:action		controllers.campaign.CalendarController.action(campaign: Integer, gameSession : Integer, action: String)
+POST	/campaign/:campaign/calendar/:gameSession/:action		controllers.campaign.CalendarController.action(campaign: Integer, gameSession : Integer, action: String)
+
+# Messages 
+  
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

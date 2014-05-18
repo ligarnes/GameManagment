@@ -1,0 +1,92 @@
+@(nav: String = "", campaign: models.campaign.Campaign)(content: Html)
+ 
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Le role social</title>
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/template.css")">
+    
+  	
+	<!--
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+ 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+ 
+    
+	<!-- <script src="js/vendor/modernizr.js"></script>-->
+  </head>
+  <body>
+    <header id="menu-bar">
+		<span id="logo">Logo<span>text</span></span>
+		
+		<nav>    
+			<ul id="menu">
+				<li>
+					<a href="#">Mon profil<span><img src="@routes.Assets.at("images/user_avatar_s.jpg")" alt=""/></span></a>
+					<ul>
+						<li> <a href="">Editer</a> </li>
+						<li> <a href="">Deconnexion</a> </li>
+					</ul>
+				</li>
+				<li>
+					<div class="notif_container">
+					<a href="#"><img src="@routes.Assets.at("images/message.svg")" width="25px" height="25px" alt="Messages"></a>
+					<div class="notification_small">2</div> 
+					</div>
+				</li>
+			</ul>
+		</nav>
+    </header>
+	<div>
+
+		<!-- Campaign banner -->
+		<div id="game_banner"> 
+			<img src="@routes.Assets.at("images/pathfinder_kingmaker_par_kenshiro_banner.png")" alt="banni&eagrave;re de campagne">
+		</div>
+		
+		<!-- Navigation bar -->
+		<nav id="internal_menu">
+			<ul>
+				<li class="@("active".when(nav == "home"))"> 
+					<a href="#">Accueil</a> 
+				</li>
+				
+				<li class=@("active".when(nav == "players"))> 
+					<div class="notif_container">
+						<a href="#">Joueurs</a> 
+						<div class="notification_large">1</div> 
+					</div>
+				</li>
+				
+				<li class=@("active".when(nav == "calendar"))> 
+					<div class="notif_container">
+						<a href="@controllers.campaign.routes.CalendarController.viewCalendar(campaign.getId())">Calendrier</a> 
+						<div class="notification_large">12</div> 
+					</div>
+				</li>
+				
+				<li class=@("active".when(nav == "discussions"))>
+					<div class="notif_container">
+						<a href="@controllers.campaign.routes.ConversationController.viewConversationsList(campaign.getId())">Discussions</a> 
+						<div class="notification_large">22</div> 
+					</div>
+				</li>
+			</ul>
+		</nav>  
+	
+		<!-- Content -->
+		<div class="content">
+			@content
+		</div>
+	
+		<footer>
+		Copyright | terms of us | contact us
+		</footer>
+	</div>	
+
+  </body>
+</html>

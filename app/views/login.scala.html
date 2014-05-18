@@ -1,0 +1,39 @@
+@(form: Form[LoginController.Login])
+
+<html>
+    <head>
+        <title>AppName</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
+    </head>
+    <body>
+        @helper.form(routes.LoginController.authenticate) {
+            
+            <h1>Sign in</h1>
+            
+            @if(form.hasGlobalErrors) { 
+                <p class="error">
+                    @form.globalError.message
+                </p> 
+            }
+            
+            @if(flash.contains("success")) {
+                <p class="success">
+                    @flash.get("success")
+                </p>
+            }
+            
+            <p>
+                <input type="text" name="username" placeholder="Pseudo">
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="Mot de passe">
+            </p>
+            <p>
+                <button type="submit">Login</button>
+            </p>
+            
+        }
+            
+    </body>
+</html>

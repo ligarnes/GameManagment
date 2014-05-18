@@ -1,0 +1,204 @@
+
+# Users
+
+users:
+
+    - !!models.User
+        id:         1
+        username:   Cody
+        email:      cody@sample.com
+        password:   $2a$10$lNJLzsNeCc/rs.T1xXJEN.zJfs3uGaUOqMX5zNKt2Z5Cav1PDoxzW
+        phoneCell:  418 906 0449
+    
+    - !!models.User
+        id:         2
+        username:   Hugo
+        email:      hugo@sample.com
+        name:       Hugo
+        surname:    Terrisse
+        address:    Lyon
+        password:   $2a$10$b/gx2QkuXtlbGNTBXkDN5eDXcWLI7RCrelWK8wyJWoTvLtPJt2ZOi
+    
+# Players
+players:
+
+    - !!models.campaign.Player
+        user:      !!models.User
+                        id: 1
+        color:     #9ed5ff
+
+    - !!models.campaign.Player
+        user:      !!models.User
+                        id: 2
+        color:     #d9ffa8
+
+# messages
+		
+projects:
+
+    - !!models.Project
+        id:         1
+        name:       Play 2.0   
+        folder:     Play framework
+        members:
+            - !!models.User
+                email: guillaume@sample.com
+            - !!models.User
+                email: maxime@sample.com
+            - !!models.User
+                email: sadek@sample.com
+            - !!models.User
+                email: erwan@sample.com
+
+    - !!models.Project
+        id:         2
+        name:       Play 1.2.4
+        folder:     Play framework
+        members:
+            - !!models.User
+                email: guillaume@sample.com
+            - !!models.User
+                email: erwan@sample.com
+                
+    - !!models.Project
+        id:         3
+        name:       Website 
+        folder:     Play framework
+        members:
+            - !!models.User
+                email: guillaume@sample.com
+            - !!models.User
+                email: maxime@sample.com
+
+    - !!models.Project
+        id:         4
+        name:       Secret project 
+        folder:     Zenexity
+        members:
+            - !!models.User
+                email: guillaume@sample.com
+            - !!models.User
+                email: maxime@sample.com
+            - !!models.User
+                email: sadek@sample.com
+            - !!models.User
+                email: erwan@sample.com
+                
+    - !!models.Project
+        id:         5
+        name:       Playmate
+        folder:     Zenexity
+        members:
+            - !!models.User
+                email: maxime@sample.com
+            
+    - !!models.Project
+        id:         6
+        name:       Things to do
+        folder:     Personal
+        members:
+            - !!models.User
+                email: guillaume@sample.com
+
+    - !!models.Project
+        id:         7
+        name:       Play samples
+        folder:     Zenexity
+        members:
+            - !!models.User
+                email: guillaume@sample.com
+            - !!models.User
+                email: maxime@sample.com
+                
+    - !!models.Project
+        id:         8
+        name:       Private
+        folder:     Personal
+        members:
+            - !!models.User
+                email: guillaume@sample.com
+
+    - !!models.Project
+        id:         9
+        name:       Private
+        folder:     Personal
+        members:
+            - !!models.User
+                email: erwan@sample.com
+                
+    - !!models.Project
+        id:         10
+        name:       Private
+        folder:     Personal
+        members:
+            - !!models.User
+                email: sadek@sample.com
+                
+    - !!models.Project
+        id:         11
+        name:       Private
+        folder:     Personal
+        members:
+            - !!models.User
+                email: maxime@sample.com
+                
+# Task
+
+tasks:
+    
+    - !!models.Task
+        title:      Fix the documentation
+        done:       false
+        folder:     Todo
+        project:    !!models.Project
+                        id: 1
+        assignedTo: !!models.User
+                        email: guillaume@sample.com
+                        
+    - !!models.Task
+        title:      Prepare the beta release
+        done:       false
+        folder:     Urgent
+        dueDate:    2011-11-15
+        project:    !!models.Project
+                        id: 1
+        assignedTo: !!models.User
+                        email: guillaume@sample.com
+
+    - !!models.Task
+        title:      Buy some milk
+        done:       false
+        folder:     Todo
+        project:    !!models.Project
+                        id: 9
+
+    - !!models.Task
+        title:      Check 1.2.4-RC2
+        done:       false
+        folder:     Todo
+        dueDate:    2011-11-18
+        project:    !!models.Project
+                        id: 2
+        assignedTo: !!models.User
+                        email: guillaume@sample.com
+                        
+    - !!models.Task
+        title:      Finish zentask integration
+        done:       true
+        folder:     Todo
+        dueDate:    2011-11-15
+        project:    !!models.Project
+                        id: 7
+        assignedTo: !!models.User
+                        email: maxime@sample.com
+                        
+    - !!models.Task
+        title:      Release the secret project
+        done:       false
+        folder:     Todo
+        dueDate:    2012-01-01
+        project:    !!models.Project
+                        id: 4
+        assignedTo: !!models.User
+                        email: sadek@sample.com
+            

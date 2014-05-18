@@ -1,0 +1,19 @@
+@(campaign: models.campaign.Campaign, conversation: models.campaign.conversation.Conversation)
+
+@campaignView("discussions", campaign){
+
+	<div class="conversation">
+		<header>@conversation.getTitle()</header>
+					
+		@conversation.getMessages().map{ msg => 
+				@views.html.conversations.Message(msg)
+		}
+		
+		<!-- reply form -->
+		@helper.form(controllers.campaign.routes.ConversationController.addMessage(campaign.getId(), conversation.getId)) {
+			<textarea name="message" rows="4" cols="90" maxlength="8000" placeholder="&Eacute;crire une r&eacute;ponse..."></textarea>
+		   	<input type="Submit" value="R&eacute;pondre" class="btn-style">
+	 	}
+	</div>
+}
+

@@ -1,0 +1,15 @@
+@(msg: models.campaign.conversation.Message)
+
+				
+
+<div class="message_box">
+	<span class="message_text" style="background-color:@msg.getAuthor().getColor();">@msg.getMessage()</span>
+	<div class="message_box_meta">
+		<span class="triangle_large" style="border-top-color:@msg.getAuthor().getColor();"></span>
+		<span class="triangle_small"></span>
+		
+		<span class="message_meta_author">@msg.getAuthor().getUser().getUsername()
+		<span class="message_meta_time">@msg.getSinceDate()</span>
+		</span>
+	</div>
+</div> 

@@ -1,0 +1,56 @@
+@(campaignModel: models.campaign.Campaign)
+				
+@campaignView("calendar", campaignModel){
+<div class="calendar-container"> 
+	<div>
+		<h3>Dates potentiels:</h3>
+		
+		<table class="table-style-no-over">
+			<thead>
+			<tr>
+				<th>Dates potentiel</th>
+				<th>Pr&eacute;sent</th>
+				<th>Absent</th>
+				<th>Sans r&eacute;ponse</th>
+				<th>Actions</th>
+			</tr>
+			</thead>
+			<tbody>
+			@campaignModel.getGameSessions().map{ gameSession => 
+				<tr> 
+					<td> le @gameSession.getDate() 
+						pendant @gameSession.getDuration() </td>  
+					<td> 
+						@gameSession.getPresent().map{ present => 
+							@present.getUser().getUsername()
+						}
+					</td>  
+					<td> 
+						@gameSession.getMissing().map{ present => 
+							@present.getUser().getUsername()
+						}
+					</td> 
+					<td> 
+						@gameSession.getNotAnswer().map{ present =>  
+							@present.getUser().getUsername()
+						}
+					</td> 
+					<td>
+						@helper.form(controllers.campaign.routes.CalendarController.action(campaignModel.getId(), gameSession.getId(), "present")) {
+							<input type="hidden" name="id" value="@gameSession.getId()">
+							<input type="Submit" value="Pr&eacute;sent" class="btn-style">
+						}
+						@helper.form(controllers.campaign.routes.CalendarController.action(campaignModel.getId(), gameSession.getId(), "missing")) {
+							<input type="hidden" name="id" value="@gameSession.getId()">
+							<input type="Submit" value="Absent" class="btn-style">
+						}
+					</td>
+				</tr>
+			}
+			</tbody>
+		</table>
+			
+		<a href="@controllers.campaign.routes.CalendarController.addDateView(campaignModel.getId())" class="btn-style">Propos&eacute;e une date</a>
+	</div>
+</div>
+}
